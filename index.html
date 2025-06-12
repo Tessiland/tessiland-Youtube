@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ricerca Tutorial Tessiland</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Ricerca Tutorial Tessiland</h1>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Cosa vuoi creare oggi? (es. borsa, scialle...)">
-            <button id="searchButton">Cerca</button>
-        </div>
-    </header>
+    <nav class="tabs">
+        <button id="tabDiscover" class="tab-button active">Crea con la Community</button>
+<button id="tabMyChannel" class="tab-button">Il Mondo Tessiland</button>
+    </nav>
 
-    <main>
-        <div id="resultsContainer"></div>
-    </main>
-<script src="script.js"></script>
+    <div id="discoverContent" class="tab-content active">
+        <header>
+            <h1>Ricerca Tutorial Tessiland</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Cosa vuoi creare oggi? (es. borsa, scialle...)">
+                <button id="searchButton">Cerca</button>
+            </div>
+            <div id="filterContainer" class="filter-container">
+                <span>Ordina per:</span>
+                <button class="filter-button active" data-order="relevance">Più Rilevanti</button>
+                <button class="filter-button" data-order="date">Più Recenti</button>
+                <button class="filter-button" data-order="viewCount">Più Visti</button>
+            </div>
+        </header>
+        <main id="discoverResults"></main>
+    </div>
+
+    <div id="myChannelContent" class="tab-content">
+        <header>
+            <h1>Dal Mio Canale Ufficiale</h1>
+            <p>Una raccolta sempre aggiornata degli ultimi video tutorial Tessiland.</p>
+        </header>
+        <main id="myChannelResults"></main>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>

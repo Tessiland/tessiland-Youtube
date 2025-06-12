@@ -85,3 +85,66 @@ h1 {
     color: #666;
     margin: 0 15px 15px;
 }
+/* Stili per le schede (Tabs) */
+.tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+    margin-bottom: -2px; /* Allinea con il bordo inferiore */
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button.active {
+    color: #6a1b9a;
+    border-bottom: 2px solid #6a1b9a;
+}
+
+/* Stili per il contenuto delle schede */
+.tab-content {
+    display: none; /* Nasconde il contenuto di default */
+}
+
+.tab-content.active {
+    display: block; /* Mostra solo il contenuto attivo */
+}
+
+/* Stili per i filtri */
+.filter-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background-color: #f06292;
+    color: white;
+    border-color: #f06292;
+}
+
+/* Adattiamo il main per contenere la griglia */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
