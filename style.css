@@ -1,65 +1,159 @@
-body {
-    font-family: sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+/* =================================================================
+   NUOVO STILE ISPIRATO AL BRAND TESSILAND (GIUGNO 2025)
+   ================================================================= */
+
+/* 1. Import dei nuovi Fonts da Google */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
+
+/* 2. Impostazioni Globali e Palette Colori */
+:root {
+    --colore-primario: #e10078; /* Fucsia ufficiale Tessiland */
+    --colore-titoli: #4a235a;   /* Viola-melanzana scuro */
+    --colore-testo: #333333;
+    --colore-sfondo: #f9f7f9;
+    --colore-card: #ffffff;
+    --font-titoli: 'Poppins', sans-serif;
+    --font-testo: 'Lato', sans-serif;
+    --box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.07);
 }
 
+body {
+    font-family: var(--font-testo);
+    background-color: var(--colore-sfondo);
+    color: var(--colore-testo);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* 3. Stile dell'Header e della Ricerca */
 header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-h1 {
-    color: #6a1b9a; /* Un viola ispirato a Tessiland */
+header h1 {
+    font-family: var(--font-titoli);
+    font-weight: 700;
+    font-size: 2.5em; /* Più grande e d'impatto */
+    color: var(--colore-titoli);
 }
 
 .search-container {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 #searchInput {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 350px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px; /* Completamente arrotondato */
     font-size: 16px;
+    background-color: var(--colore-card);
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05); /* Ombra interna */
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05), 0 0 0 3px var(--colore-primario_40); /* Aggiunge un anello colorato quando attivo */
 }
 
 #searchButton {
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    background-color: #f06292; /* Un rosa/fucsia a tema */
+    background-color: var(--colore-primario);
     color: white;
-    border-radius: 5px;
+    border-radius: 50px;
+    font-family: var(--font-titoli);
+    font-weight: 600;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 #searchButton:hover {
-    background-color: #ec407a;
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(225, 0, 120, 0.4);
 }
-/* Stili per i risultati */
-#resultsContainer {
+
+/* 4. Stile delle Schede (Tabs) e Filtri */
+.tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.tab-button {
+    padding: 12px 25px;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: var(--font-titoli);
+    font-weight: 500;
+    cursor: pointer;
+    color: #888;
+    margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active {
+    color: var(--colore-titoli);
+    border-bottom: 3px solid var(--colore-primario);
+}
+
+.filter-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-button {
+    padding: 8px 18px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-testo);
+    transition: all 0.3s ease;
+}
+
+.filter-button.active {
+    background-color: var(--colore-titoli);
+    color: white;
+    border-color: var(--colore-titoli);
+}
+
+/* 5. Stile dei Risultati e delle Video-Card */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
     margin-top: 30px;
+    padding: 0 10px; /* Un po' di respiro laterale */
 }
 
 .video-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--colore-card);
+    border-radius: 15px; /* Angoli più arrotondati */
+    box-shadow: var(--box-shadow);
     overflow: hidden;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
 }
 
 .video-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .video-card a {
@@ -70,81 +164,22 @@ h1 {
 
 .video-card img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 9; /* Mantiene le proporzioni corrette */
+    object-fit: cover; /* Evita distorsioni dell'immagine */
     display: block;
+    border-bottom: 1px solid #eee;
 }
 
 .video-card h3 {
-    font-size: 16px;
-    margin: 10px 15px;
+    font-family: var(--font-titoli);
+    font-weight: 600;
+    font-size: 17px;
+    margin: 15px;
     line-height: 1.4;
 }
 
 .video-card p {
     font-size: 14px;
-    color: #666;
+    color: #777;
     margin: 0 15px 15px;
-}
-/* Stili per le schede (Tabs) */
-.tabs {
-    display: flex;
-    justify-content: center;
-    border-bottom: 2px solid #ddd;
-    margin-bottom: 20px;
-}
-
-.tab-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
-    font-size: 18px;
-    cursor: pointer;
-    color: #666;
-    margin-bottom: -2px; /* Allinea con il bordo inferiore */
-    border-bottom: 2px solid transparent;
-}
-
-.tab-button.active {
-    color: #6a1b9a;
-    border-bottom: 2px solid #6a1b9a;
-}
-
-/* Stili per il contenuto delle schede */
-.tab-content {
-    display: none; /* Nasconde il contenuto di default */
-}
-
-.tab-content.active {
-    display: block; /* Mostra solo il contenuto attivo */
-}
-
-/* Stili per i filtri */
-.filter-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.filter-button {
-    padding: 8px 15px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.filter-button.active {
-    background-color: #f06292;
-    color: white;
-    border-color: #f06292;
-}
-
-/* Adattiamo il main per contenere la griglia */
-main {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
 }
