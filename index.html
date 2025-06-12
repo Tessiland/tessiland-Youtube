@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ricerca Tutorial Tessiland</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <h1>Motore di Ricerca Tutorial Tessiland</h1>
+    <header>
+        <h1>Ricerca Tutorial Tessiland</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cosa vuoi creare oggi? (es. borsa, scialle...)">
+            <button id="searchButton">Cerca</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="resultsContainer"></div>
+    </main>
 
 </body>
 </html>
