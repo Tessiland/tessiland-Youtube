@@ -10,16 +10,26 @@
 
     <nav class="tabs">
         <button id="tabDiscover" class="tab-button active">Crea con la Community</button>
-<button id="tabMyChannel" class="tab-button">Il Mondo Tessiland</button>
+        <button id="tabMyChannel" class="tab-button">Il Mondo Tessiland</button>
     </nav>
 
-   <div id="discoverContent" class="tab-content active">
+    <div id="discoverContent" class="tab-content active">
         <header>
             <h1>Crea con la Community</h1>
+            <p>Trova migliaia di tutorial e progetti realizzati con i prodotti Tessiland da creator di tutto il mondo. Usa i filtri per trovare la tua prossima ispirazione!</p>
+            
             <div class="filter-grid">
+                <div class="filter-group product-filter">
+                    <label for="productInput">Cerca un Prodotto Specifico</label>
+                    <input type="text" id="productInput" list="productList" placeholder="Digita il nome di un filato...">
+                    <datalist id="productList">
+                        </datalist>
+                </div>
+
                 <div class="filter-group">
-                    <label for="toolSelect">1. Scegli lo Strumento</label>
+                    <label for="toolSelect">Strumento</label>
                     <select id="toolSelect">
+                        <option value="">Tutti</option>
                         <option value="uncinetto">Uncinetto</option>
                         <option value="ferri">Ferri da Maglia</option>
                         <option value="tunisino">Uncinetto Tunisino</option>
@@ -28,15 +38,28 @@
                 </div>
 
                 <div class="filter-group">
-                    <label for="categorySelect">2. Scegli la Categoria</label>
+                    <label for="categorySelect">Categoria</label>
                     <select id="categorySelect">
-                        <option value="">Seleziona prima uno strumento</option>
-                    </select>
+                        <option value="">Tutte</option>
+                        </select>
                 </div>
 
                 <div class="filter-group">
-                    <label for="keywordInput">3. Aggiungi dettagli (opzionale)</label>
-                    <input type="text" id="keywordInput" placeholder="es. estivo, cotone, facile...">
+                    <label for="materialSelect">Materiale</label>
+                    <select id="materialSelect">
+                        <option value="">Tutti</option>
+                        <option value="cotone">Cotone</option>
+                        <option value="lana">Lana</option>
+                        <option value="acrilico">Acrilico</option>
+                        <option value="ciniglia">Ciniglia</option>
+                        <option value="juta">Juta</option>
+                        <option value="rafia">Rafia</option>
+                        <option value="alpaca">Alpaca</option>
+                        <option value="cashmere">Cashmere</option>
+                        <option value="mohair">Mohair</option>
+                        <option value="fettuccia">Fettuccia</option>
+                        <option value="lycra">Lycra</option>
+                    </select>
                 </div>
             </div>
             <button id="searchButton" class="main-search-button">Cerca Progetti</button>
@@ -47,20 +70,19 @@
     <div id="myChannelContent" class="tab-content">
         <header>
             <h1>Dalla Nostra Redazione</h1>
-            <p>Una raccolta sempre aggiornata degli ultimi video Tessiland.</p>
+            <p>Una raccolta sempre aggiornata degli ultimi video, novità e presentazioni prodotto dal canale ufficiale Tessiland.</p>
         </header>
         <main id="myChannelResults"></main>
     </div>
 
-
-    <script src="script.js"></script>
     <div id="videoModal" class="modal-overlay">
         <div class="modal-content">
             <span id="closeButton" class="close-button">&times;</span>
-            <div id="youtubePlayerContainer">
-                </div>
+            <div id="youtubePlayerContainer"></div>
         </div>
     </div>
+
+    <script src="prodotti.json"></script> <script src="script.js"></script>
+
 </body>
-...
-    </html>
+</html>
