@@ -10,7 +10,7 @@
 
     <nav class="tabs">
         <button id="tabDiscover" class="tab-button active">Crea con la Community</button>
-        <button id="tabMyChannel" class="tab-button">Il Mondo Tessiland</button>
+        <a href="https://www.youtube.com/channel/UCFPNUN2uiFu1lJNHYtdy2Zg" target="_blank" rel="noopener noreferrer" class="tab-button">Il Mondo Tessiland</a>
     </nav>
 
     <div id="discoverContent" class="tab-content active">
@@ -22,10 +22,8 @@
                 <div class="filter-group product-filter">
                     <label for="productInput">Cerca un Prodotto Specifico</label>
                     <input type="text" id="productInput" list="productList" placeholder="Digita il nome di un filato...">
-                    <datalist id="productList">
-                        </datalist>
+                    <datalist id="productList"></datalist>
                 </div>
-
                 <div class="filter-group">
                     <label for="toolSelect">Strumento</label>
                     <select id="toolSelect">
@@ -36,14 +34,12 @@
                         <option value="ricamo">Ricamo</option>
                     </select>
                 </div>
-
                 <div class="filter-group">
                     <label for="categorySelect">Categoria</label>
                     <select id="categorySelect">
                         <option value="">Tutte</option>
-                        </select>
+                    </select>
                 </div>
-
                 <div class="filter-group">
                     <label for="materialSelect">Materiale</label>
                     <select id="materialSelect">
@@ -67,14 +63,6 @@
         <main id="discoverResults"></main>
     </div>
 
-    <div id="myChannelContent" class="tab-content">
-        <header>
-            <h1>Dalla Nostra Redazione</h1>
-            <p>Una raccolta sempre aggiornata degli ultimi video, novità e presentazioni prodotto dal canale ufficiale Tessiland.</p>
-        </header>
-        <main id="myChannelResults"></main>
-    </div>
-
     <div id="videoModal" class="modal-overlay">
         <div class="modal-content">
             <span id="closeButton" class="close-button">&times;</span>
@@ -82,7 +70,6 @@
         </div>
     </div>
 
-    <script src="prodotti.json"></script> <script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
