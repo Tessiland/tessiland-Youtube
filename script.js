@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. FUNZIONI PRINCIPALI
 
     function openModal(videoId) {
-        youtubePlayerContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/VIDEO_ID{videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+       youtubePlayerContainer.innerHTML = `<iframe src="https://www.youtube.com/watch?v=FnTRzK6peYs...{videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
         videoModal.classList.add('visible');
     }
 
