@@ -13,19 +13,33 @@
 <button id="tabMyChannel" class="tab-button">Il Mondo Tessiland</button>
     </nav>
 
-    <div id="discoverContent" class="tab-content active">
+   <div id="discoverContent" class="tab-content active">
         <header>
-            <h1>Ricerca Tutorial Tessiland</h1>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Cosa vuoi creare oggi? (es. borsa, scialle...)">
-                <button id="searchButton">Cerca</button>
+            <h1>Crea con la Community</h1>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label for="toolSelect">1. Scegli lo Strumento</label>
+                    <select id="toolSelect">
+                        <option value="uncinetto">Uncinetto</option>
+                        <option value="ferri">Ferri da Maglia</option>
+                        <option value="tunisino">Uncinetto Tunisino</option>
+                        <option value="ricamo">Ricamo</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="categorySelect">2. Scegli la Categoria</label>
+                    <select id="categorySelect">
+                        <option value="">Seleziona prima uno strumento</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="keywordInput">3. Aggiungi dettagli (opzionale)</label>
+                    <input type="text" id="keywordInput" placeholder="es. estivo, cotone, facile...">
+                </div>
             </div>
-            <div id="filterContainer" class="filter-container">
-                <span>Ordina per:</span>
-                <button class="filter-button active" data-order="relevance">Più Rilevanti</button>
-                <button class="filter-button" data-order="date">Più Recenti</button>
-                <button class="filter-button" data-order="viewCount">Più Visti</button>
-            </div>
+            <button id="searchButton" class="main-search-button">Cerca Progetti</button>
         </header>
         <main id="discoverResults"></main>
     </div>
@@ -40,5 +54,13 @@
 
 
     <script src="script.js"></script>
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="closeButton" class="close-button">&times;</span>
+            <div id="youtubePlayerContainer">
+                </div>
+        </div>
+    </div>
 </body>
-</html>
+...
+    </html>

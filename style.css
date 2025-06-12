@@ -1,14 +1,14 @@
 /* =================================================================
-   NUOVO STILE ISPIRATO AL BRAND TESSILAND (GIUGNO 2025)
+   STILE TESSILAND APP - VERSIONE CON FILTRI AVANZATI
    ================================================================= */
 
-/* 1. Import dei nuovi Fonts da Google */
+/* 1. Import dei Fonts da Google */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
 
 /* 2. Impostazioni Globali e Palette Colori */
 :root {
     --colore-primario: #e10078; /* Fucsia ufficiale Tessiland */
-    --colore-titoli: #4a235a;   /* Viola-melanzana scuro */
+    --colore-secondario: #4a235a; /* Viola-melanzana scuro */
     --colore-testo: #333333;
     --colore-sfondo: #f9f7f9;
     --colore-card: #ffffff;
@@ -26,61 +26,86 @@ body {
     line-height: 1.6;
 }
 
-/* 3. Stile dell'Header e della Ricerca */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
+/* 3. Stile dell'Header e Titoli di Sezione */
 header h1 {
     font-family: var(--font-titoli);
     font-weight: 700;
-    font-size: 2.5em; /* Più grande e d'impatto */
-    color: var(--colore-titoli);
+    font-size: 2em;
+    color: var(--colore-secondario);
+    text-align: center;
 }
 
-.search-container {
+header p {
+    text-align: center;
+    max-width: 600px;
+    margin: 10px auto 30px auto;
+    color: #666;
+}
+
+
+/* 4. Stile per la NUOVA Griglia di Filtri */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 25px;
+}
+
+.filter-group {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    flex-direction: column;
 }
 
-#searchInput {
-    width: 350px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 50px; /* Completamente arrotondato */
+.filter-group label {
+    font-family: var(--font-titoli);
+    font-weight: 600;
+    color: var(--colore-secondario);
+    margin-bottom: 8px;
     font-size: 16px;
-    background-color: var(--colore-card);
-    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05); /* Ombra interna */
-    transition: all 0.3s ease;
 }
 
-#searchInput:focus {
-    outline: none;
-    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05), 0 0 0 3px var(--colore-primario_40); /* Aggiunge un anello colorato quando attivo */
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: var(--font-testo);
+    background-color: #fdfdfd;
 }
 
-#searchButton {
-    padding: 12px 25px;
+.filter-group input {
+    box-sizing: border-box; /* Assicura che il padding non rompa il layout */
+}
+
+
+.main-search-button {
+    display: block;
+    margin: 25px auto 0 auto; /* Centrato e con spazio sopra */
+    padding: 12px 40px;
     border: none;
     background-color: var(--colore-primario);
     color: white;
     border-radius: 50px;
     font-family: var(--font-titoli);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-#searchButton:hover {
+.main-search-button:hover {
     transform: translateY(-2px);
     box-shadow: 0px 5px 15px rgba(225, 0, 120, 0.4);
 }
 
-/* 4. Stile delle Schede (Tabs) e Filtri */
+
+/* 5. Stile delle Schede (Tabs) */
 .tabs {
     display: flex;
     justify-content: center;
@@ -103,35 +128,12 @@ header h1 {
 }
 
 .tab-button.active {
-    color: var(--colore-titoli);
+    color: var(--colore-secondario);
     border-bottom: 3px solid var(--colore-primario);
 }
 
-.filter-container {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
 
-.filter-button {
-    padding: 8px 18px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: var(--font-testo);
-    transition: all 0.3s ease;
-}
-
-.filter-button.active {
-    background-color: var(--colore-titoli);
-    color: white;
-    border-color: var(--colore-titoli);
-}
-
-/* 5. Stile dei Risultati e delle Video-Card */
+/* 6. Stile dei Risultati e delle Video-Card */
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
@@ -140,12 +142,12 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     margin-top: 30px;
-    padding: 0 10px; /* Un po' di respiro laterale */
+    padding: 0 10px;
 }
 
 .video-card {
     background-color: var(--colore-card);
-    border-radius: 15px; /* Angoli più arrotondati */
+    border-radius: 15px;
     box-shadow: var(--box-shadow);
     overflow: hidden;
     transition: all 0.3s ease;
@@ -164,8 +166,8 @@ main {
 
 .video-card img {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Mantiene le proporzioni corrette */
-    object-fit: cover; /* Evita distorsioni dell'immagine */
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     display: block;
     border-bottom: 1px solid #eee;
 }
@@ -182,4 +184,76 @@ main {
     font-size: 14px;
     color: #777;
     margin: 0 15px 15px;
+}
+/* =================================================================
+   7. Stile per la Finestra Modale (Video Player)
+   ================================================================= */
+
+.modal-overlay {
+    position: fixed; /* Si fissa sulla finestra del browser */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Sfondo nero semitrasparente */
+    display: none; /* Nascosto di default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Assicura che sia sopra a tutto */
+    opacity: 0; /* Partenza trasparente per l'animazione */
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.visible {
+    display: flex; /* Lo rendiamo visibile */
+    opacity: 1; /* Lo rendiamo opaco */
+}
+
+.modal-content {
+    background-color: var(--colore-card);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: relative;
+    width: 90%;
+    max-width: 800px; /* Larghezza massima del video */
+    transform: scale(0.95); /* Partenza leggermente rimpicciolito */
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1); /* Effetto "pop" quando appare */
+}
+
+.close-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--colore-secondario);
+    color: white;
+    font-size: 24px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#youtubePlayerContainer {
+    position: relative;
+    padding-bottom: 56.25%; /* Mantiene l'aspect ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+#youtubePlayerContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
