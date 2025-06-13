@@ -5,5 +5,5 @@
   node_bundler = "esbuild"
   [functions."update-database"]
     schedule = "@daily"
-    # Aumentiamo il timeout per questa funzione specifica a 25 secondi
-    timeout = 25
+    # Diamo al nostro robot fino a 60 secondi per ogni esecuzione
+    timeout = 60
