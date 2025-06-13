@@ -1,0 +1,17 @@
+{
+  "uncinetto": {
+    "Borsa": ["borsa", "pochette", "clutch", "zainetto", "sacca", "marsupio", "porta cellulare", "net bag", "tote bag", "secchiello", "borsa mare", "crochet bag", "handbag", "purse", "backpack", "fanny pack", "bucket bag", "crossbody bag", "messenger bag", "market bag"],
+    "Scialle / Collo": ["scialle", "stola", "coprispalle", "mantella", "scialle a triangolo", "virus shawl", "baktus", "scaldacollo", "collo", "cowl", "snood", "wrap", "cape"],
+    "Amigurumi / Pupazzi": ["amigurumi", "pupazzo", "bambola", "peluche", "animaletto", "personaggio", "sonaglio", "doudou", "crochet doll", "plushie", "rattle"],
+    "Maglione / Top": ["maglione", "maglia", "pullover", "top", "canotta", "gilet", "cardigan", "golfino", "bolero", "maglioncino", "sweater", "jumper", "tank top", "bralette", "shrug"],
+    "Casa / Decorazioni": ["coperta", "plaid", "cuscino", "centrino", "tappeto", "presina", "sottobicchiere", "cestino", "portaoggetti", "arazzo", "mandala", "piastrella granny", "blanket", "pillow", "doily", "rug", "potholder", "coaster", "basket", "wall hanging"],
+    "Accessori Persona": ["cappello", "berretto", "basco", "fascia capelli", "turbante", "guanti", "manicotti", "calzini", "beanie", "hat", "headband", "gloves", "mittens", "socks"],
+    "Bambino / Neonato": ["copertina neonato", "scarpine", "cappellino baby", "vestitino", "tutina", "giostrina culla", "baby blanket", "baby booties", "baby hat", "baby dress", "romper"]
+  },
+  "ferri": {
+    "Maglione / Top": ["maglione ai ferri", "pullover ferri", "top down ferri", "cardigan ai ferri", "gilet ai ferri", "knit sweater", "knitted jumper"],
+    "Scialle / Collo": ["scialle ai ferri", "stola ai ferri", "collo ai ferri", "cowl ai ferri", "brioche stitch", "knit shawl", "knitted wrap"],
+    "Accessori Persona": ["cappello ai ferri", "berretto a coste", "guanti ai ferri", "calzini ai ferri", "knit hat", "knit beanie", "knit socks", "knitted gloves"],
+    "Bambino / Neonato": ["copertina ai ferri", "scarpine ferri", "cappellino lana", "knit baby blanket"]
+  }
+}

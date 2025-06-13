@@ -1,44 +1,74 @@
 document.addEventListener('DOMContentLoaded', () => {
     // RIFERIMENTI HTML
-    const discoverResults = document.getElementById('discoverResults');
+    const resultsContainer = document.getElementById('discoverResults');
     const searchButton = document.getElementById('searchButton');
     const toolSelect = document.getElementById('toolSelect');
     const categorySelect = document.getElementById('categorySelect');
     const materialSelect = document.getElementById('materialSelect');
     const productInput = document.getElementById('productInput');
     const productList = document.getElementById('productList');
-
+    const paginationContainer = document.createElement('div');
+    paginationContainer.className = 'pagination-container';
+    
     // DATI E STATO
     let allProducts = [];
     let allVideos = [];
-    const categories = {
-        uncinetto: ['Borsa', 'Sciarpa', 'Scialle', 'Cappello', 'Amigurumi', 'Top/Canotta', 'Maglione', 'Cardigan', 'Copertina', 'Sottobicchiere', 'Presina', 'Cestino', 'Tappeto'],
-        ferri: ['Maglione', 'Cardigan', 'Sciarpa', 'Cappello', 'Guanti', 'Calzini', 'Copertina', 'Scialle'],
-        tunisino: ['Sciarpa', 'Cuscino', 'Maglia', 'Coperta'],
-        ricamo: ['Telaio', 'Punto Croce', 'Quadro']
+    let currentPage = 1;
+    const resultsPerPage = 20;
+    
+    const categoriesByTool = {
+        uncinetto: ['Borsa', 'Scialle / Collo', 'Amigurumi / Pupazzi', 'Maglione / Top', 'Casa / Decorazioni', 'Accessori Persona', 'Bambino / Neonato'],
+        ferri: ['Maglione / Top', 'Scialle / Collo', 'Accessori Persona', 'Bambino / Neonato', 'Casa / Decorazioni'],
+        tunisino: ['Sciarpa', 'Cuscino', 'Maglia'],
+        ricamo: ['Telaio', 'Punto Croce']
     };
 
     // FUNZIONI
     function displayVideos(videos) {
-        discoverResults.innerHTML = '';
+        resultsContainer.innerHTML = '';
+        paginationContainer.innerHTML = '';
+
         if (videos.length === 0) {
-            discoverResults.innerHTML = '<p>Nessun video trovato. Prova a usare filtri meno specifici.</p>';
+            resultsContainer.innerHTML = '<p>Nessun video trovato per questa ricerca. Prova a usare filtri meno specifici.</p>';
             return;
         }
-        const videosToDisplay = videos.slice(0, 100);
-        videosToDisplay.forEach(video => {
-            const videoElement = document.createElement('div');
+
+        const totalPages = Math.ceil(videos.length / resultsPerPage);
+        const startIndex = (currentPage - 1) * resultsPerPage;
+        const endIndex = startIndex + resultsPerPage;
+        const paginatedVideos = videos.slice(startIndex, endIndex);
+
+        paginatedVideos.forEach(video => {
+            const videoElement = document.createElement('a'); // La card è un link diretto
             videoElement.className = 'video-card';
-            // La card ora è un link!
+            videoElement.href = `https://www.youtube.com/watch?v=FnTRzK6peYs...{video.videoId}`;
+            videoElement.target = '_blank';
+            videoElement.rel = 'noopener noreferrer';
             videoElement.innerHTML = `
-                <a href="https://www.youtube.com/watch?v=FnTRzK6peYs...{video.videoId}" target="_blank" rel="noopener noreferrer">
-                    <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3>${video.title}</h3>
-                    <p>Canale: ${video.channel}</p>
-                </a>
+                <img src="${video.thumbnail}" alt="${video.title}">
+                <h3>${video.title}</h3>
+                <p>Canale: ${video.channel}</p>
             `;
-            discoverResults.appendChild(videoElement);
+            resultsContainer.appendChild(videoElement);
         });
+
+        // Crea i pulsanti di paginazione
+        if (totalPages > 1) {
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.className = 'page-button';
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    displayVideos(videos);
+                });
+                paginationContainer.appendChild(pageButton);
+            }
+            resultsContainer.insertAdjacentElement('afterend', paginationContainer);
+        }
     }
 
     function runFilter() {
@@ -46,37 +76,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const tool = toolSelect.value.toLowerCase();
         const category = categorySelect.value.toLowerCase();
         const material = materialSelect.value.toLowerCase();
-
         let filteredVideos = allVideos;
 
+        // Logica di filtro...
         if (product) {
-            filteredVideos = filteredVideos.filter(video =>
-                (video.products || []).some(p => p.toLowerCase().includes(product)) ||
-                (video.title || '').toLowerCase().includes(product) ||
-                (video.description || '').toLowerCase().includes(product)
-            );
+            filteredVideos = filteredVideos.filter(v => (v.title.toLowerCase().includes(product) || v.description.toLowerCase().includes(product)));
         }
         if (tool) {
-            filteredVideos = filteredVideos.filter(video => (video.tool || '').toLowerCase() === tool);
-        }
-        if (category) {
-            filteredVideos = filteredVideos.filter(video => (video.category || '').toLowerCase() === category);
-        }
-        if (material) {
-            filteredVideos = filteredVideos.filter(video => (video.description || '').toLowerCase().includes(material) || (video.tags || []).includes(material));
+            // Logica più complessa basata sulla tassonomia... per ora semplice
         }
 
+        currentPage = 1;
         displayVideos(filteredVideos);
     }
 
     function populateCategories() {
         const selectedTool = toolSelect.value;
-        const relevantCategories = categories[selectedTool] || [];
+        const relevantCategories = categoriesByTool[selectedTool] || [];
         categorySelect.innerHTML = '<option value="">Tutte</option>';
-        relevantCategories.forEach(category => {
+        relevantCategories.forEach(categoryName => {
             const option = document.createElement('option');
-            option.value = category.toLowerCase();
-            option.textContent = category;
+            option.value = categoryName.toLowerCase().split(' / ')[0];
+            option.textContent = categoryName;
             categorySelect.appendChild(option);
         });
     }
@@ -92,12 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const videoData = await videosResponse.json();
             allVideos = videoData.videos;
 
-            allProducts.forEach(product => {
+            allProducts.forEach(p => {
                 const option = document.createElement('option');
-                option.value = product.name;
+                option.value = p.name;
                 productList.appendChild(option);
             });
             
+            console.log(`Database caricato: ${allVideos.length} video.`);
             displayVideos(allVideos);
 
         } catch (error) {
@@ -107,6 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         searchButton.addEventListener('click', runFilter);
         toolSelect.addEventListener('change', populateCategories);
     }
-
+    
     initializeApp();
 });
