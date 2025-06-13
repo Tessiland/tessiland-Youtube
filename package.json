@@ -1,0 +1,15 @@
+{
+  "name": "tessiland-search-app",
+  "version": "1.0.0",
+  "description": "App per la ricerca di tutorial Tessiland",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tessiland",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@octokit/rest": "^19.0.13",
+    "node-fetch": "^2.6.7"
+  }
+}
